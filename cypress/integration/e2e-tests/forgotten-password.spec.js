@@ -1,13 +1,17 @@
+import HomePage from "../../page-objects/HomePage";
+import TopNavbar from "../../page-objects/components/TopNavbar";
+
 describe("Forgotten Password", () => {
 
+    const homePage = new HomePage();
+    const topNavbar = new TopNavbar();
+
     before(function () {
-        cy.visit('http://zero.webappsecurity.com/index.html');
-        cy.url().should('include', 'index.html')
+        homePage.visit();
     });
 
     it('should display login form', function () {
-        cy.get("#signin_button").click()
-        cy.get("#login_form").should('be.visible')
+        topNavbar.clickOnSignInButton();
     });
 
     it('should display forgotten password form', function () {
